@@ -1,0 +1,3 @@
+Idée de résolution pour le challenge :
+
+En utilisant ls -l | grep 'Jan' on récupère tout les fichiers crées en Janvier, on pourrait donc a partir de la cut ce qu'affiche grep pour récupérer tout les fichiers crées avec le mois spécifié dans grep, mettre le tout dans un fichier et boucler sur ce fichier en déplçant chacun des fichiers dans son dossier correspondant.
