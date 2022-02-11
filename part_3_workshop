@@ -1,0 +1,35 @@
+1. Write a clone of the neofetch program in a script named my_neofetch.sh
+Expected output:
+
+2. Write a command tester
+$ ./tester.sh -h
+USAGE: my_tester.sh test_name "my_executable -to test" "the_reference -to test" [timeout=5s]
+$ ./tester.sh test1 "echo -e \"hello\nworld\n42\"" "echo -e \"hello\nworld\n42\""
+========== RUN TEST: test1 ==========
+test1 OK
+========== END TEST: test1 ==========
+$ ./tester.sh test2 "echo -e \"hello\nworld\n42\"" "echo -e \"hello\nWORLD\n42\""
+========== RUN TEST: test2 ==========
+2c2
+< world
+---
+> WORLD
+test1 KO
+========== END TEST: test2 ==========
+
+3. Write a script that runs my_tester.sh taking parameters from a CSV, for example:
+$ cat tests.csv
+#test_name;my_executable;the_reference;timeout (optionnal)
+long listing;./my_ls -l;ls -l;3
+recursive listing;./my_ls -R;ls -R;
+Your script must run all tests from the CSV, the script must be named mouli.sh
+
+4. Modify the step2 and step3 to be able to write the content of a file to stdin
+$ cat ./input1
+ls -l
+$ my_tester.sh -h
+USAGE: my_tester.sh test_name "my_executable -to test" "the_reference -to test" [timeout=5s] [stdin]
+$ my_tester.sh test_name "./msh" "tcsh" 1 ./input
+$ cat tests.csv
+#test_name;my_executable;the_reference;timeout (optional);stdin (optional)
+simple exec;./mysh;tcsh;1;input1
